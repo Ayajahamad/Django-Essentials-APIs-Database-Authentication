@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <title>Student Dashboard</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7fa;
+            color: #333;
+        }
+
+        .navbar {
+            background-color: #003366;
+            padding: 15px 30px;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar h3 {
+            margin: 0;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            margin-left: 20px;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #f4a261;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 30px;
+            margin-top: 30px;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .sidebar h3 {
+            text-align: center;
+            font-size: 22px;
+            margin-bottom: 30px;
+            color: #003366;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .sidebar ul li {
+            margin: 20px 0;
+        }
+
+        .sidebar ul li a {
+            color: #007bff;
+            font-size: 18px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .sidebar ul li a:hover {
+            color: #f4a261;
+        }
+
+        .content {
+            flex: 1;
+            margin-left: 30px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+
+        .content h2 {
+            color: #003366;
+            margin-bottom: 20px;
+        }
+
+        .welcome-message {
+            background-color: #e9f6ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+
+        .student-info,
+        .attendance-info {
+            margin-bottom: 30px;
+        }
+
+        .info-title {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .info-data {
+            color: #555;
+            font-size: 16px;
+        }
+
+        .attendance-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+
+        .attendance-table th, .attendance-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .attendance-table th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .attendance-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .btn {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-size: 18px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .logout-link {
+            text-align: right;
+            margin-top: 20px;
+        }
+
+        .logout-link a {
+            color: #ff4d4d;
+            font-size: 16px;
+            text-decoration: none;
+        }
+
+        .logout-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <h3>Student Dashboard</h3>
+        <div class="logout-link">
+            <a href="/management/">Logout</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h3>Dashboard Menu</h3>
+            <ul>
+                <li><a href="/student/details/">My Details</a></li>
+                <li><a href="/student/attendance/">My Attendance</a></li>
+                <li><a href="/student/submit_assignment/">Submit Assignment</a></li>
+                <li><a href="/student/grades/">My Grades</a></li>
+                <li><a href="/student/messages/">Messages</a></li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <div class="welcome-message">
+                <h4>Welcome, {{ student_name }}!</h4>
+                <p>We're glad to have you here. Use the navigation menu to view and update your details, submit assignments, and check your attendance and grades.</p>
+            </div>
+
+            <h2>Your Information</h2>
+            <div class="student-info">
+                <p><span class="info-title">Full Name:</span> <span class="info-data">{{ student_name }}</span></p>
+                <p><span class="info-title">Student ID:</span> <span class="info-data">{{ student_id }}</span></p>
+                <p><span class="info-title">Email:</span> <span class="info-data">{{ student_email }}</span></p>
+                <p><span class="info-title">Date of Birth:</span> <span class="info-data">{{ student_dob }}</span></p>
+                <p><span class="info-title">Gender:</span> <span class="info-data">{{ student_gender }}</span></p>
+            </div>
+
+            <h2>Your Attendance</h2>
+            <div class="attendance-info">
+                <p><span class="info-title">Total Classes: </span><span class="info-data">{{ total_classes }}</span></p>
+                <p><span class="info-title">Classes Attended: </span><span class="info-data">{{ attended_classes }}</span></p>
+                <p><span class="info-title">Attendance Percentage: </span><span class="info-data">{{ attendance_percentage }}%</span></p>
+
+                <table class="attendance-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for attendance in attendance_records %}
+                        <tr>
+                            <td>{{ attendance.date }}</td>
+                            <td>{{ attendance.status }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <a href="/student/details/edit/" class="btn">Edit My Details</a>
+            <a href="/student/submit_assignment/" class="btn">Submit New Assignment</a>
+        </div>
+    </div>
+
+</body>
+</html>
