@@ -1,0 +1,16 @@
+# Ignore the virtual environment
+myworld/
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore environment variables file
+.env
+
+# Ignore database files (if SQLite is used)
+db.sqlite3
+
+# Ignore compiled files
+*.log

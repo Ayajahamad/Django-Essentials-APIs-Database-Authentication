@@ -1,0 +1,98 @@
+A .env file stores environment variables like database credentials, secret keys, and debug settings in Django.
+
+1. Ensure you are inside your Django project folder (same level as manage.py). Then, run the following command in CMD:
+    *echo. > .env*
+This creates an empty .env file.
+
+2. To edit the .env file, open it in Notepad:
+    *notepad .env*
+
+3. Now, add the following environment variables inside the file:
+    # Database settings
+    DB_NAME=mydatabase
+    DB_USER=myuser
+    DB_PASSWORD=mypassword
+    DB_HOST=localhost
+    DB_PORT=5432
+
+    # Django settings
+    SECRET_KEY=mysecretkey
+    DEBUG=True
+Save and close the file.
+
+4. Use the .env File in settings.py
+Now, install python-decouple to read the .env file in Django:
+     *pip install python-decouple*
+
+     Then, update settings.py to load these values:
+
+    #
+    from decouple import config
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': config('DB_NAME'),
+            'USER': config('DB_USER'),
+            'PASSWORD': config('DB_PASSWORD'),
+            'HOST': config('DB_HOST'),
+            'PORT': config('DB_PORT'),
+        }
+    }
+
+    SECRET_KEY = config('SECRET_KEY')
+    DEBUG = config('DEBUG', default=False, cast=bool)
+    #
+
+Verify If .env File Is Working
+Run the following command to check if Django is reading values from .env:
+    *python -c "from decouple import config; print(config('DB_NAME'))"*
+
+If it prints mydatabase, everything is working fine. ✅
+
+5. Add .env to .gitignore
+To prevent pushing .env to GitHub, run:
+    *echo .env > .gitignore*
+
+-------------------------------------------
+=> Generate Secret Key Using Python :
+Use Django's Built-in Command
+If you're working with Django, you can use its built-in management command to generate a secret key.
+Open Command Prompt in your Django project folder.
+Run the Django Command:
+    *python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"*
+
+Copy the Generated Key: The generated secret key will be printed, such as:
+    *f7*f^%3g$dt^djaen!i6#z!hwhn@b$4@xy8jht#3yy+txk$9_!*
+
+Add the Secret Key to .env:
+    *SECRET_KEY=f7*f^%3g$dt^djaen!i6#z!hwhn@b$4@xy8jht#3yy+txk$9_!*
+
+-----------------------------------------------
+=> Create the requirements.txt File
+1. Now, navigate to your Django project folder and run:
+    *pip freeze > requirements.txt*
+
+This command saves all installed dependencies in a file named requirements.txt.
+
+2. Verify the requirements.txt File
+Check if requirements.txt is created successfully by running:
+    *notepad requirements.txt*
+
+    It should contain a list of all installed packages, like this:
+    #
+    Django==4.2
+    djangorestframework==3.14.0
+    psycopg2==2.9.5
+    python-decouple==3.6
+    #
+---------------------------------------------------
+=> Install Dependencies from requirements.txt (On Another System or Virtual Env)
+If you need to set up the project on another system, simply run:
+    *pip install -r requirements.txt*
+This will install all packages listed in requirements.txt.
+
+
+
+
+

@@ -1,0 +1,32 @@
+{% extends "master.html" %}
+
+{% comment %} {% block title %}
+  My Tennis Club - List of all members
+{% endblock %}
+
+
+{% block content %}
+  <div class="mycard">
+    <h1>Members</h1>
+    <ul>
+      {% for x in mymembers %}
+        <li onclick="window.location = 'details/{{ x.slug }}'">{{ x.firstname }} {{ x.lastname }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock %} {% endcomment %}
+
+
+
+{% comment %} Bootstrap Design {% endcomment %}
+{% block title %}
+  Details about {{ mymember.firstname }} {{ mymember.lastname }}
+{% endblock %}
+
+{% block content %}
+<div class="d-grid gap-2 col-6 mx-auto my-3">
+  {% for x in mymembers %}
+    <button class="btn btn-primary" type="button" onclick="window.location = 'details/{{ x.slug }}'">{{ x.firstname }} {{ x.lastname }}</button>
+  {% endfor %}
+</div>
+{% endblock %}c

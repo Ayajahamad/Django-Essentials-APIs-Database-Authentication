@@ -1,0 +1,78 @@
+asgiref==3.8.1
+beautifulsoup4==4.12.3
+certifi==2024.12.14
+charset-normalizer==3.4.1
+coreschema==0.0.4
+Django==4.2.17
+django-bootstrap-v5==1.0.11
+django-cors-headers==4.6.0
+djangorestframework==3.15.2
+drf-yasg==1.21.8
+idna==3.10
+inflection==0.5.1
+itypes==1.2.0
+Jinja2==3.1.5
+MarkupSafe==3.0.2
+packaging==24.2
+pillow==11.1.0
+psycopg2==2.9.10
+psycopg2-binary==2.9.10
+python-decouple==3.8
+pytz==2024.2
+PyYAML==6.0.2
+requests==2.32.3
+soupsieve==2.6
+sqlparse==0.5.3
+tzdata==2024.2
+uritemplate==4.1.1
+urllib3==2.3.0
+whitenoise==6.8.2
+
+# ---------------------------
+# # Explanation of Each Package
+# ## Django Core & Utilities  
+# - Django==4.2.17 → The main web framework for building web applications.  
+# - sqlparse==0.5.3 → Used for parsing and formatting SQL queries in Django.  
+# - pytz==2024.2 → Provides timezone support for Django.  
+# - tzdata==2024.2 → Timezone database for handling different time zones in Django.  
+# - asgiref==3.8.1 → ASGI (Asynchronous Server Gateway Interface) support for Django projects.  
+
+# ## Django REST Framework & API Handling  
+# - djangorestframework==3.15.2 → Provides tools to build RESTful APIs in Django.  
+# - drf-yasg==1.21.8 → Generates API documentation using Swagger and ReDoc.  
+# - coreschema==0.0.4 → Helps define schemas for API documentation.  
+# - uritemplate==4.1.1 → Supports dynamic URL templating for REST API endpoints.  
+
+# ## Database & ORM  
+# - psycopg2==2.9.10 → PostgreSQL database adapter for Django.  
+# - psycopg2-binary==2.9.10 → Binary version of `psycopg2` for PostgreSQL connectivity.  
+
+# ## Security & Environment Handling  
+# - django-cors-headers==4.6.0 → Manages CORS (Cross-Origin Resource Sharing) in Django APIs.  
+# - python-decouple==3.8 → Helps manage environment variables securely using a `.env` file.  
+
+# ## Frontend & Templating  
+# - Jinja2==3.1.5 → A fast and powerful templating engine used in Django.  
+# - MarkupSafe==3.0.2 → Provides safe string handling for Jinja2 templates.  
+# - django-bootstrap-v5==1.0.11 → Adds Bootstrap 5 support to Django templates.  
+
+# ## Static Files & Deployment  
+# - whitenoise==6.8.2 → Serves static files efficiently in production without needing Nginx or Apache.  
+
+# ## Web Scraping & HTML Parsing  
+# - beautifulsoup4==4.12.3 → Parses HTML and XML documents for web scraping.  
+# - soupsieve==2.6 → CSS selector support for BeautifulSoup.  
+
+# ## HTTP Requests & Networking  
+# - requests==2.32.3 → Handles HTTP requests (GET, POST, etc.).  
+# - urllib3==2.3.0 → Provides advanced HTTP client features.  
+# - certifi==2024.12.14 → Ensures secure SSL connections.  
+# - idna==3.10 → Supports internationalized domain names.  
+# - charset-normalizer==3.4.1 → Ensures correct text encoding in HTTP responses.  
+
+# ## Other Utilities  
+# - PyYAML==6.0.2 → Handles reading and writing YAML files.  
+# - inflection==0.5.1 → Provides functions to modify strings (like pluralizing words).  
+# - itypes==1.2.0 → Provides type checking utilities in Python.  
+# - packaging==24.2 → Helps manage Python package versions.  
+# - pillow==11.1.0 → Handles image processing (resizing, converting formats, etc.).  

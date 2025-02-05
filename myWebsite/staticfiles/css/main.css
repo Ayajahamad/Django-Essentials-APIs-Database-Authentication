@@ -1,0 +1,20 @@
+body{
+    background-color: rgb(165, 206, 233) !important;
+}
+.profile{
+    height: 200px;
+}
+ul{
+    padding: 0;
+    list-style-type: none;
+}
+
+.social-links ul, li{
+    list-style-type: none;
+    display: inline-block;
+}
+
+.social{
+    width: 25px;
+    height: 25px;
+}

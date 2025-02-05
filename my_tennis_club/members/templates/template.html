@@ -1,0 +1,113 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  {% comment %} <link rel="stylesheet" href="{% static 'myfirst.css' %}"> {% endcomment %}
+  <link rel="stylesheet" href="{% static 'myglobal.css' %}">
+  <body>
+    <!-- {% for x in fruits %}
+  <h1>{{ x }}</h1>
+{% endfor %} -->
+
+    <ul>
+      {% for x in mymembers %}
+      <li>{{ x.firstname }}</li>
+      {% endfor %}
+    </ul>
+
+    <h1>Hello {{ firstname }}, how are you?</h1>
+
+    {% with firstname="Tobias" %}
+    <h1>Hello {{ firstname }}, how are you?</h1>
+    {% endwith %}
+
+    <p>In views.py you can see what the fruits variable looks like.</p>
+
+    <!-- In Django templates, you can perform programming logic like executing if statements and for loops.
+These keywords, if and for, are called "template tags" in Django.
+To execute template tags, we surround them in flower brackets with percentage sign.  -->
+
+    {% if greeting == 1 %}
+    <h1>Hello</h1>
+    {% else %}
+    <h1>Bye</h1>
+    {% endif %} {% comment %} Django Comments HERE {% endcomment %}
+    <h1>Welcome Everyone</h1>
+    {% comment %}
+    <h1>Welcome ladies and gentlemen</h1>
+    {% endcomment %} {% comment %} Smaller Comments {% endcomment %}
+    <h1>Welcome{# Everyone#}</h1>
+
+    {% comment %} Include with statement variable {% endcomment %} {% include
+    "mymenu.html" with me="TOBIAS" sponsor="W3SCHOOLS" %}
+
+    <!-- In Django templates, you can render variables by putting them inside flower brackets: -->
+    <h1>Hello {{ name }}, how are you?</h1>
+
+    {% comment %} Create Variables in Template You can also create variables
+    directly in the template, by using the {% with %} template tag. The variable
+    is available until the {% endwith %} tag appears: {% endcomment %} 
+    {% with firstname="Tobias" %}
+    <p>
+      You can also create variables directly in the template, by using the '
+      with ' template tag. The variable is available until the ' endwith ' tag
+      appears:
+    </p>
+    <h1>Hello {{ firstname }}, how are you?</h1>
+    {% endwith %}
+
+    <h1>: Member Objects in Database</h1>
+    <ul>
+      {% for member in members %}
+      <li>{{ member }}</li>
+      {% endfor %}
+    </ul>
+
+    <h1>: Member Values in Database</h1>
+    <ul>
+      {% for member in memberValues %}
+      <li>{{ member }}</li>
+      {% endfor %}
+    </ul>
+
+    {% comment %} Include in Django {% endcomment %} 
+    {% include 'footer.html' %}
+
+
+    <h2>Django QuerySet :</h2>
+    <p>A QuerySet is a collection of data from a database.
+      A QuerySet is built up as a list of objects.
+      QuerySets makes it easier to get the data you actually need, by allowing you to filter and order the data at an early stage.
+      In this tutorial we will be querying data from the Member table.</p>
+
+      <ul>
+        <li>
+          use the .all() method to get all the records and fields of the Member model
+        </li>
+        <li>
+          The values() method allows you to return each object as a Python dictionary, with the names and values as key/value pairs
+        </li>
+        <li>
+          The values_list() method allows you to return only the columns that you specify
+          <b>Ex : mydata = Member.objects.values_list('firstname')</b>
+        </li>
+        <li>
+          You can filter the search to only return specific rows/records, by using the filter() method.
+          <b>Return only the records where firstname is 'Emil' : mydata = Member.objects.filter(firstname='Emil').values()</b>
+        </li>
+
+        <li>
+          <p><b>filter() Method :</b></p>
+          <p>The filter() method takes the arguments as **kwargs (keyword arguments), so you can filter on more than one field by separating them by a comma :
+            <b>mydata = Member.objects.filter(lastname='Refsnes', id=2).values()</b>
+        </li>
+        </p>
+      </ul>
+      <h1>Oder by Clause</h1>
+      <ul>
+        {% for i in mydataOrderby %}
+        <li>{{i}}</li>
+        {% endfor %}
+      </ul>
+  </body>
+</html>

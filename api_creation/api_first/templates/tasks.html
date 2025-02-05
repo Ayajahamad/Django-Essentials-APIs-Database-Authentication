@@ -1,0 +1,63 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task_list</title>
+</head>
+<body>
+    <h1>Task Handling</h1>
+
+    <form action="" method="post" id='tasksubmit'>
+        <h2>Enter the task :</h2>
+        <label for="title">Title :
+            <input type="text" name="title" id="title">
+        </label><br><br>
+        <label for="description">Description :
+            <input type="text" name="description" id="description">
+        </label>
+        <button type="submit">Submit</button>
+        <label for="completed">Completed :
+            <input type="radio" name="completed" id="completed">
+        </label>
+    </form>
+
+    <form action="">
+        <h2>To get Single task :</h2>
+        <label for="number">Enter id :
+            <input type="number" name="number" id="number">
+        </label>
+        <button type="submit" id="single_task">Single task</button>
+    </form>
+
+    <form action="">
+        <h2>To delete task :</h2>
+        <label for="number">Enter id :
+            <input type="number" name="number" id="delete">
+        </label>
+        <button type="submit" id="delete_task">Single task</button>
+    </form>
+
+    <form action="" method="post" id='update_task'>
+        <h2>To Update a Task :</h2>
+        <i><b>Note :</b> Enter an id in to_get_single_task above To Update.</i><br>
+        <label for="title">Title :
+            <input type="text" name="title" id="u_title">
+        </label><br><br>
+        <label for="description">Description :
+            <input type="text" name="description" id="u_description">
+        </label><br><br>
+        
+        <label for="completed">Completed :
+            <input type="radio" name="completed" id="u_completed">
+        </label><br><br>
+        <button type="submit">Submit</button>
+    </form> 
+
+    <ul id='task_list'></ul>
+
+    <script src="{% static 'api_first/js/script.js' %}"></script>
+</body>
+</html>
